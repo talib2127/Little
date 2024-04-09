@@ -1,0 +1,14 @@
+
+<h1>Booking Form</h1>
+<form method="post" action="{% url 'create_reservation' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Book</button>
+</form>
+
+<h2>Current Reservations</h2>
+<ul>
+  {% for reservation in reservations %}
+    <li>{{ reservation.date }}: {{ reservation.start_time }} - {{ reservation.end_time }}</li>
+  {% endfor %}
+</ul>
